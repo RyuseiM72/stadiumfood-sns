@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,15 +25,16 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 //　投稿用のルート
-Route::group(['prefix' => 'post'],function(){
-Route::get('/create',  [App\Http\Controllers\PostController::class, 'create'])->name('post.create');
-Route::post('/store',  [App\Http\Controllers\PostController::class, 'store'])->name('post.store');
-Route::get('/index',  [App\Http\Controllers\PostController::class, 'index'])->name('post.index');
-Route::get('/edit/{id}',  [App\Http\Controllers\PostController::class, 'edit'])->name('post.edit');
-Route::post('/update/{id}',  [App\Http\Controllers\PostController::class, 'update'])->name('post.update');
+Route::prefix('post')->group(function () {
+    Route::get('/create',  [PostController::class, 'create'])->name('post.create');
+    Route::post('/store',  [PostController::class, 'store'])->name('post.store');
+    Route::get('/index',  [PostController::class, 'index'])->name('post.index');
+    Route::get('/edit/{id}',  [PostController::class, 'edit'])->name('post.edit');
+    Route::post('/update/{id}',  [PostController::class, 'update'])->name('post.update');
+    Route::delete('/posts/{id}', [PostController::class,'delete'])->name('post.delete');
+    
+    Route::get('/cloudinary', [PostController::class, 'cloudinary']);  //投稿フォームの表示
+    Route::post('/cloudinary', [PostController::class, 'cloudinary_store']);  //画像保存処理
 
-
-Route::get('/cloudinary', [PostController::class, 'cloudinary']);  //投稿フォームの表示
-Route::post('/cloudinary', [PostController::class, 'cloudinary_store']);  //画像保存処理
 
 });

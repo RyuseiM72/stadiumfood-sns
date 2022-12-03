@@ -73,8 +73,18 @@ class PostController extends Controller
             
             $post->save();
             
-            return redirect('post/index');    
+            return redirect('post.index');    
     }
+    
+    public function delete(Post $post)
+    {
+        $post->delete();
+        return view('post.index');
+    }
+    
+    
+    
+    
     
      public function cloudinary()
     {
