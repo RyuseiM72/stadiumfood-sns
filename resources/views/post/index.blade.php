@@ -8,7 +8,9 @@
 <h1>タイトル</h1>
 <p>{{$p->title}}</p>
 <h1>画像</h1>
+<a href="{{route('post.show',['id' => $p->id])}}">
 <p><img src="../../uploads/{{$p->image}}"alt=""></p>
+</a>
 <h1>詳細</h1>
 <p>{{$p->description}}</p>
 <form action="{{route('post.delete',['id' => $p->id])}}" method="post">
