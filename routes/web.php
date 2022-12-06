@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginWithGoogleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,3 +42,7 @@ Route::prefix('post')->group(function ()
 });
 
 Route::post('/posts/{post}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
+
+// 追加
+Route::get("auth/google", [LoginWithGoogleController::class,"redirectToGoogle",]);
+Route::get("auth/redirect", [LoginWithGoogleController::class,"handleGoogleCallback",]);
