@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\LoginWithGoogleController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +43,8 @@ Route::prefix('post')->group(function ()
 
 Route::post('/posts/{post}/comments', [App\Http\Controllers\CommentController::class, 'store'])->name('comments.store');
 
-// 追加
-Route::get("auth/google", [LoginWithGoogleController::class,"redirectToGoogle",]);
-Route::get("auth/redirect", [LoginWithGoogleController::class,"handleGoogleCallback",]);
+Route::get('login/google', [LoginController::class,"redirectToGoogle",]);
+Route::get('login/google/callback', [LoginController::class,"handleGoogleCallback"]);
+
+Route::post('/{id}/favorite', [App\Http\Controllers\FavoriteController::class, 'store'])->name('favorites.favorite');
+Route::delete('/{id}/unfavorite', [App\Http\Controllers\FavoriteController::class, 'destroy'])->name('favorites.unfavorite');

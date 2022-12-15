@@ -29,10 +29,10 @@
     <h1>コメント</h1>
         <ul>
             <li>
-                <form method="POST" action="{{route('comments.store',$post)}}">
+                <form method="POST" action="{{route('comments.store',$post->id)}}">
                     @csrf
-                    <input type="text" name"body">
-                    <button>追加</button>
+                    <input type="text" name="body">
+                    <button type="submit">投稿を保存</button>
                 </form>
             </li>
         </ul>

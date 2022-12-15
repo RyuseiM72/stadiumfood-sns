@@ -196,6 +196,8 @@ return [
         App\Providers\RouteServiceProvider::class,
         
         CloudinaryLabs\CloudinaryLaravel\CloudinaryServiceProvider::class, //この行を追加
+        
+        Laravel\Socialite\SocialiteServiceProvider::class, // 'providers' 内に追記
 
     ],
 
@@ -212,6 +214,10 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
-    ])->toArray(),
-
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class, // 'aliases' 内に追記
+        ])->toArray(),
+    
+    
+    
+    
 ];

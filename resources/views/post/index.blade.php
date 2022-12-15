@@ -2,9 +2,11 @@
 
 <h1>投稿一覧</h1>
 @foreach($post as $p)
+
 @if($p->user_id == Auth::id())
 <a href="{{route('post.edit',['id' => $p->id])}}">編集</a>
 @endif
+
 <h1>タイトル</h1>
 <p>{{$p->title}}</p>
 <h1>画像</h1>
@@ -18,6 +20,25 @@
     @method('DELETE')
     <button type="button" onclick="deletePost({{ $p->id }})">削除</button> 
 </form>
+
+@if (Auth::id() != $p->user_id)
+ 
+   @if (Auth::user()->is_favorite($p->id))
+ 
+        {!! Form::open(['route' => ['favorites.unfavorite', $p->id], 'method' => 'delete']) !!}
+            {!! Form::submit('いいね！を外す', ['class' => "button btn btn-warning"]) !!}
+        {!! Form::close() !!}
+ 
+   @else
+ 
+        {!! Form::open(['route' => ['favorites.favorite', $p->id]]) !!}
+            {!! Form::submit('いいね！を付ける', ['class' => "button btn btn-success"]) !!}
+        {!! Form::close() !!}
+ 
+   @endif
+
+@endif
+
 @endforeach
 
 <script>
@@ -29,5 +50,6 @@
         }
     }
 </script>
+
 
 </x-app-layout>
