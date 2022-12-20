@@ -8,12 +8,17 @@ use Illuminate\Support\Facades\Auth;
 use Cloudinary;
 use App\Http\Requests\StorePostRequest;
 use App\Http\Requests\UpdatePostRequest;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
     public function index()
     {
-        $post = Post::all();
+        $post = DB::table('users')
+            ->join('posts','users.id','=','posts.user_id')
+            ->select('posts.title','posts.image','posts.description','posts.user_id','posts.id','users.name','users.id as user_id')
+            ->get();
+        
         return view('post.index',['post' => $post]);
     }
     

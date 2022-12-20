@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,5 +48,10 @@ Route::post('/posts/{post}/comments', [App\Http\Controllers\CommentController::c
 Route::get('login/google', [LoginController::class,"redirectToGoogle",]);
 Route::get('login/google/callback', [LoginController::class,"handleGoogleCallback"]);
 
-Route::post('/{id}/favorite', [App\Http\Controllers\FavoriteController::class, 'store'])->name('favorites.favorite');
-Route::delete('/{id}/unfavorite', [App\Http\Controllers\FavoriteController::class, 'destroy'])->name('favorites.unfavorite');
+Route::post('/{id}/favorite', [FavoriteController::class, 'store'])->name('favorites.favorite');
+Route::delete('/{id}/unfavorite', [FavoriteController::class, 'destroy'])->name('favorites.unfavorite');
+
+Route::post('users/{user}/follow', [UserController::class, 'follow'])->name('follow');
+Route::delete('users/{user}/unfollow',[UserController::class, 'unfollow'])->name('unfollow');
+
+Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');

@@ -7,6 +7,7 @@
 <a href="{{route('post.edit',['id' => $p->id])}}">編集</a>
 @endif
 
+<a href="{{route('user.show',["id" => $p->user_id])}}">{{$p->name}}</a>
 <h1>タイトル</h1>
 <p>{{$p->title}}</p>
 <h1>画像</h1>
