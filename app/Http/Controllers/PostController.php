@@ -88,17 +88,16 @@ class PostController extends Controller
             return redirect('post.index');    
     }
     
-    public function delete(Post $post)
+    public function destroy($id)
     {
+        $post = Post::find($id);
+        
         $post->delete();
-        return view('post.index');
+        
+        return redirect('post.index');
     }
     
-    
-    
-    
-    
-     public function cloudinary()
+    public function cloudinary()
     {
         return view('post.create');
     }
@@ -109,4 +108,5 @@ class PostController extends Controller
         $image_url = Cloudinary::upload($request->file('image')->getRealPath())->getSecurePath();
         dd($image_urll);  //画像のURLを画面に表示
     }
+    
 }

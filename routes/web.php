@@ -36,7 +36,7 @@ Route::prefix('post')->group(function ()
     Route::get('/edit/{id}',  [PostController::class, 'edit'])->name('post.edit');
     Route::get('/show/{id}',  [PostController::class, 'show'])->name('post.show');
     Route::post('/update/{id}',  [PostController::class, 'update'])->name('post.update');
-    Route::delete('/posts/{id}', [PostController::class,'delete'])->name('post.delete');
+    Route::post('/destroy/{id}', [PostController::class,'destroy'])->name('post.destroy');
     
     Route::get('/cloudinary', [PostController::class, 'cloudinary']);  //投稿フォームの表示
     Route::post('/cloudinary', [PostController::class, 'cloudinary_store']);  //画像保存処理
@@ -55,3 +55,6 @@ Route::post('users/{user}/follow', [UserController::class, 'follow'])->name('fol
 Route::delete('users/{user}/unfollow',[UserController::class, 'unfollow'])->name('unfollow');
 
 Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
+
+Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
+Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');

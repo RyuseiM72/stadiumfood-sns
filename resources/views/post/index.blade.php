@@ -3,10 +3,6 @@
 <h1>投稿一覧</h1>
 @foreach($post as $p)
 
-@if($p->user_id == Auth::id())
-<a href="{{route('post.edit',['id' => $p->id])}}">編集</a>
-@endif
-
 <a href="{{route('user.show',["id" => $p->user_id])}}">{{$p->name}}</a>
 <h1>タイトル</h1>
 <p>{{$p->title}}</p>
@@ -16,11 +12,13 @@
 </a>
 <h1>詳細</h1>
 <p>{{$p->description}}</p>
-<form action="{{route('post.delete',['id' => $p->id])}}" method="post">
+
+@if($p->user_id == Auth::id())
+    <a href="{{route('post.edit',['id' => $p->id])}}" class="btn btn-sm btn-outline-secondary">編集</a>
+    <form method="POST" action="{{route('post.destroy',['id'=>$p->id])}}">
     @csrf
-    @method('DELETE')
-    <button type="button" onclick="deletePost({{ $p->id }})">削除</button> 
-</form>
+    <button type="submit" class="btn btn-danger">削除</button>
+@endif
 
 @if (Auth::id() != $p->user_id)
  
@@ -41,16 +39,6 @@
 @endif
 
 @endforeach
-
-<script>
-    function deletePost(id) {
-        'use strict'
-
-        if (confirm('削除すると復元できません。\n本当に削除しますか？')) {
-            document.getElementById(`form_${id}`).submit();
-        }
-    }
-</script>
 
 
 </x-app-layout>
