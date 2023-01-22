@@ -1,3 +1,4 @@
+<x-app-layout>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -12,34 +13,33 @@
     <div class="container">
         <h1>詳細</h1>
         <div>
-            <h2>タイトル</h2>
+            <img src="../../uploads/{{$post->image}}" class="card-img-top" alt="Card image cap" width="50" height="50">
+        </div>
+        <div>
             <h2>{{$post->title}}</h2>
         </div>
         <div>
-            <h2>画像</h2>
-            <img src="../../uploads/{{$post->image}}" class="card-img-top" alt="Card image cap" width="300" height="200">
+            <h2>{{$post->description}}</h2>
         </div>
         <div>
-            <h2>詳細</h2>
-            <h2>{{$post->description}}</h2>
+            <h2>コメント</h2>
+            <ul>
+                <li>
+                    <form method="POST" action="{{route('comments.store',$post->id)}}">
+                        @csrf
+                        <input type="text" name="body">
+                        <button type="submit" class="btn btn-primary">コメントする</button>
+                    </form>
+                </li>
+            </ul>
+            <ul>
+                @foreach($post->comments()->latest()->get() as $comment)
+                <li>
+                    {{$comment->body}}
+                </li>
+                @endforeach
+            </ul>
         </div>
     </div>
 </html>
-    
-    <h1>コメント</h1>
-        <ul>
-            <li>
-                <form method="POST" action="{{route('comments.store',$post->id)}}">
-                    @csrf
-                    <input type="text" name="body">
-                    <button type="submit">投稿を保存</button>
-                </form>
-            </li>
-        </ul>
-        <ul>
-            @foreach($post->comments()->latest()->get() as $comment)
-            <li>
-                {{$comment->body}}
-            </li>
-            @endforeach
-        </ul>
+</x-app-layout>

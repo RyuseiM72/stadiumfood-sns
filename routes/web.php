@@ -18,7 +18,7 @@ use App\Http\Controllers\UserController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('top');
 });
 
 Route::get('/dashboard', function () {
@@ -58,3 +58,4 @@ Route::get('/user/{id}', [UserController::class, 'show'])->name('user.show');
 
 Route::get('/user/edit/{id}', [UserController::class, 'edit'])->name('user.edit');
 Route::post('/user/update/{id}', [UserController::class, 'update'])->name('user.update');
+
