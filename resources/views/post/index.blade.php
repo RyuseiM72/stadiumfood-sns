@@ -1,4 +1,3 @@
-<x-app-layout>
 <!doctype html>
 <html lang="ja" >
 <head>
@@ -6,13 +5,20 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
 <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP&display=swap" rel="stylesheet">
 </head>
-<body >
+<body>
 <a id="skippy" class="sr-only sr-only-focusable" href="#content">
 <div class="container">
 <span class="skiplink-text">Skip to main content</span>
 </div>
 </a>
 <div class="container d-flex flex-column flex-md-row justify-content-between">
+    <a class="py-2 d-none d-md-inline-block" href="{{ route('post.index') }}">投稿一覧</a>
+    <a class="py-2 d-none d-md-inline-block" href="{{ route('post.create') }}">新規投稿</a>
+    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">ログアウト</a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+        </form>
+</div>
 
 
 <main role="main">
@@ -83,4 +89,3 @@ window.jQuery || document.write('<script src="/docs/4.5/assets/js/vendor/jquery-
 <script src="/docs/4.5/assets/js/src/ie-emulation-modes-warning.js"></script>
 </body>
 </html>
-</x-app-layout>

@@ -24,7 +24,7 @@ class PostController extends Controller
     
     public function create()
     {
-        return view('post.create');
+        return view('post/create');
     }
     
     public function store(StorePostRequest $request)
@@ -46,7 +46,7 @@ class PostController extends Controller
             
             $post->save();
             
-            return view('post.index');
+            return view('post/index');
     }
     
     public function edit($id)
@@ -85,7 +85,7 @@ class PostController extends Controller
             
             $post->save();
             
-            return redirect('post.index');    
+            return redirect('post/index');    
     }
     
     public function destroy($id)
@@ -94,7 +94,7 @@ class PostController extends Controller
         
         $post->delete();
         
-        return redirect('post.index');
+        return redirect('post/index');
     }
     
     public function cloudinary()

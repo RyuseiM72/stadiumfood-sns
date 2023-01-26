@@ -1,5 +1,8 @@
-<x-app-layout>
-
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>新規投稿</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
@@ -31,5 +34,3 @@
             <button type="submit" class="btn btn-primary">投稿する</button>
     </form>
 </div>
-
-</x-app-layout>

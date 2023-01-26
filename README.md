@@ -10,7 +10,7 @@ URL
 テストアカウント<br>
 ユーザー名 : test<br>
 Email : test@com<br>
-Password : 1234
+Password : 1234abcd
 
 # 使用技術
 

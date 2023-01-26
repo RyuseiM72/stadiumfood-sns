@@ -1,4 +1,3 @@
-<x-app-layout>
 <!DOCTYPE html>
 <html lang="ja">
     <head>
@@ -11,9 +10,9 @@
         
     </head>
     <div class="container">
-        <h1>詳細</h1>
+        <h1>投稿</h1>
         <div>
-            <img src="../../uploads/{{$post->image}}" class="card-img-top" alt="Card image cap" width="50" height="50">
+            <img src="../../uploads/{{$post->image}}" class="card-img-top" alt="Card image cap" width="200" height="500">
         </div>
         <div>
             <h2>{{$post->title}}</h2>
@@ -42,4 +41,3 @@
         </div>
     </div>
 </html>
-</x-app-layout>
