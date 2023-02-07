@@ -2,6 +2,7 @@
 
 野球場のスタジアムグルメを写真投稿するサイトです。<br>
 感想とともに投稿・共有が可能となっております。<br>
+<img width="1680" alt="home" src="https://user-images.githubusercontent.com/113589848/217163475-2fdc3e18-6cdb-48ba-9dee-69d2015fcc42.png">
 
 # URL
 
